@@ -68,3 +68,28 @@ export const viewByEmail = (req, res) => {
       returnHelper(err, res, contact);
     });
 };
+
+/**
+ * @function viewByName
+ * @param {Object} req
+ * @param {Object} res
+ * @returns {Object}
+ */
+export const viewByName = (req, res) => {
+  const { name } = req.body;
+  const terms = name.split(' ');
+  let regexString = '';
+  for (let i = 0; i < terms.length; i += 1) {
+    regexString += terms[i];
+    if (i < terms.length - 1) regexString += '|';
+  }
+  const re = new RegExp(regexString, 'ig');
+
+  Contact.find({})
+    .or([{ firstName: re }, { lastName: re }])
+    .select(['-__v'])
+    .exec((err, contact) => {
+      returnHelper(err, res, contact);
+    });
+};
+
