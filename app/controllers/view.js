@@ -40,21 +40,6 @@ export const viewAll = (_req, res) => {
 };
 
 /**
- * @function viewById
- * @param {Object} req
- * @param {Object} res
- * @returns {Object}
- */
-
-export const viewById = (req, res) => {
-  Contact.findById({ _id: req.params.id })
-    .select(['-__v'])
-    .exec((err, contact) => {
-      returnHelper(err, res, contact);
-    });
-};
-
-/**
  * @function viewByEmail
  * @param {Object} req
  * @param {Object} res
