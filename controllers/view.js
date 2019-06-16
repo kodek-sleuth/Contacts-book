@@ -53,3 +53,18 @@ export const viewById = (req, res) => {
       returnHelper(err, res, contact);
     });
 };
+
+/**
+ * @function viewByEmail
+ * @param {Object} req
+ * @param {Object} res
+ * @returns {Object}
+ */
+export const viewByEmail = (req, res) => {
+  const { email } = req.body;
+  Contact.findOne({ email })
+    .select(['-__v'])
+    .exec((err, contact) => {
+      returnHelper(err, res, contact);
+    });
+};
