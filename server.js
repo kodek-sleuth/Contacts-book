@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import http from 'http';
-import route from './app/routes/random';
+import contactRoutes from './app/routes/contacts';
 
 require('dotenv').config();
 
@@ -32,6 +32,9 @@ if (process.env.NODE_ENV === 'DB_URL') {
 }
 
 app.use('/contacts', route);
+
+// Routes which should handle requests
+app.use("/contacts", contactRoutes);
 
 app.use((req, res, next) => {
   // Error Handling
