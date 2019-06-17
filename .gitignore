@@ -1,4 +1,8 @@
 node_modules
 .nyc_output
 .env
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+>>>>>>> 277d12c... Create contact feature with 2 tests

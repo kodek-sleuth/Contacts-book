@@ -8,13 +8,13 @@ chai.use(chaiHttp);
 
 describe('App Should add a contact', () => {
   it('should a contact', (done) => {
-    chai.request(app).post('/contacts/add')
+    chai.request(app).post('/contacts')
       .send({
+        firstname: 'Martin',
         telephone: '2569020202',
-        firstname: 'Martin Luther',
       })
       .end((error, res) => {
-        expect(res.body).to.have.property('Message');
+        expect(res.body).to.have.property('message');
         done();
       });
   });
