@@ -11,4 +11,8 @@ const contactSchema = Joi.object().keys({
   organisation: Joi.string().min(2).max(100),
 });
 
-export default { contactSchema };
+const EmailOnly = Joi.object().keys({
+  email: Joi.string().email(),
+});
+
+export default { contactSchema, EmailOnly };

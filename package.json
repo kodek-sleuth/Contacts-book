@@ -12,6 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/kodek-sleuth/Contacts-book.git"
   },
+  "nyc": {
+    "exclude": [
+      "Contacts-book/app/controllers/random.js"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
