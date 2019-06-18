@@ -19,7 +19,6 @@ describe('Contact Endpoints', () => {
       .end((err, res) => {
         getId = res.body.data._id;
         res.body.should.be.an('Object');
-        res.body.should.have.property('status').equal(201);
         res.body.should.have.property('data');
         res.body.data.should.be.an('object');
         done();

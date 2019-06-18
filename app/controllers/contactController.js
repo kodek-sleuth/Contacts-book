@@ -33,7 +33,6 @@ class contactController {
       const result = await contact.save();
       return res.status(201).json({
         message: 'Success',
-        status: res.statusCode,
         data: result,
       });
     } catch (err) {
