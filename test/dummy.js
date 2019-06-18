@@ -18,6 +18,17 @@ const falseContact = {
   organisation: 'Andela',
 };
 
+const updateContactData = {
+  id: 1,
+  firstname: 'karenzi',
+  lastname: 'david',
+  telephone: 789998782323,
+  email: 'david@mail.com',
+  homeAddress: 'gisozi',
+  workAddress: 'kiyovu',
+  organisation: 'andela'
+};
+
 export default {
-  newContact, falseContact,
+  newContact, falseContact, updateContactData
 };

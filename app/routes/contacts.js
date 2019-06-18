@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.post('/', contactController.createContact);
 
+router.patch('/:id', contactController.updateContact);
+
 export default router;

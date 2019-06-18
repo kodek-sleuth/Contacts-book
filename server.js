@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import http from 'http';
 import contactRoutes from './app/routes/contanctRouter';
 import route from './app/routes/random';
+import view from './app/routes/view';
 
 require('dotenv').config();
 
@@ -20,6 +21,7 @@ app.use(morgan('dev')); // Enabling data to be logged to console
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+mongoose.set('useFindAndModify', false);
 
 if (process.env.NODE_ENV === 'DB_URL_TEST') {
   mongoose.connect(process.env.DB_URL_TEST, { useNewUrlParser: true })
@@ -35,24 +37,15 @@ if (process.env.NODE_ENV === 'DB_URL') {
 
 app.use('/contacts', contactRoutes);
 app.use('/contacts', route);
-
-
+app.use('/contacts', view);
 // Routes which should handle requests
 app.use('/contacts', contactRoutes);
-app.use((req, res, next) => {
-  // Error Handling
-  const error = new Error('Not Found');
-  error.status = 404;
-  next(error);
-});
-
-app.use((error, req, res) => {
-  res.status(error.status || 400);
-  res.json({
-    Error: error.message,
+app.all('*', (_req, res) => {
+  res.status(400).json({
+    status: 400,
+    message: 'route doesnot exist',
   });
 });
-
 server.listen(port);
 
 export default app;

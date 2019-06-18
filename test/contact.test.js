@@ -26,6 +26,49 @@ describe('Contact Endpoints', () => {
       });
   });
 
+  it('should return all contacts', (done) => {
+    chai.request(server)
+      .get('/contacts/all')
+      .end((err, res) => {
+        res.body.data.should.be.an('Array');
+        res.body.data[0].should.be.an('Object');
+        res.body.should.have.property('status').equal(200);
+        done();
+      });
+  });
+
+  it('should return contact by contact id', (done) => {
+    chai.request(server)
+      .get(`/contacts/view/${getId}`)
+      .end((err, res) => {
+        res.body.data.should.be.an('Object');
+        res.body.should.have.property('status').equal(200);
+        done();
+      });
+  });
+
+  it('should return contact by contact email', (done) => {
+    chai.request(server)
+      .get('/contacts/view/email')
+      .send({ email: 'hervera14@gmail.com' })
+      .end((err, res) => {
+        res.body.data.should.be.an('Object');
+        res.body.should.have.property('status').equal(200);
+        done();
+      });
+  });
+
+  it('should return contacts by name substringd', (done) => {
+    chai.request(server)
+      .get('/contacts/view/name')
+      .send({ name: 'ban' })
+      .end((err, res) => {
+        res.body.data.should.be.an('Array');
+        res.body.should.have.property('status').equal(200);
+        done();
+      });
+  });
+
   it('Should not create a contact if email is valid', (done) => {
     chai.request(server)
       .post('/contacts')
@@ -38,8 +81,6 @@ describe('Contact Endpoints', () => {
         done();
       });
   });
-
-  // console.log(getId);
 
   it('should a contact deleted successful', (done) => {
     chai.request(server)
@@ -64,6 +105,18 @@ describe('Contact Endpoints', () => {
       .delete(`/contacts/${getId}1/delete`)
       .end((error, res) => {
         res.should.have.status(400);
+        done();
+      });
+  });
+
+  it('should update an existing contact', (done) => {
+    chai
+      .request(server)
+      .patch('/contacts/5d079ddae071b71c9851b341')
+      .send(dummy.updateContactData)
+      .set('Accept', 'Application/JSON')
+      .end((err, res) => {
+        res.body.should.be.an('Object');
         done();
       });
   });
