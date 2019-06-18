@@ -91,7 +91,7 @@ describe('Contact Endpoints', () => {
       });
   });
 
-  it('should a contact deleted successful', (done) => {
+  it('should not delete, a contact id not found', (done) => {
     chai.request(server)
       .delete(`/contacts/${getId}/delete`)
       .end((error, res) => {
@@ -100,7 +100,7 @@ describe('Contact Endpoints', () => {
       });
   });
 
-  it('should a contact deleted successful', (done) => {
+  it('should not delete, a contact id is wrong', (done) => {
     chai.request(server)
       .delete(`/contacts/${getId}1/delete`)
       .end((error, res) => {
