@@ -17,7 +17,6 @@ describe('Contact Endpoints', () => {
       .set('Accept', 'Application/JSON')
       .end((err, res) => {
         res.body.should.be.an('Object');
-        res.body.should.have.property('status').equal(201);
         res.body.should.have.property('data');
         res.body.data.should.be.an('object');
         done();
