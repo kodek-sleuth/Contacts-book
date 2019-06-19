@@ -42,7 +42,6 @@ app.use('/contacts', view);
 app.use('/contacts', contactRoutes);
 app.all('*', (_req, res) => {
   res.status(400).json({
-    status: 400,
     message: 'route doesnot exist',
   });
 });
