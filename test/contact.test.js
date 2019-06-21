@@ -13,7 +13,7 @@ describe('Contact Endpoints', () => {
   let getId;
   it('Should create a contact', (done) => {
     chai.request(server)
-      .post('/contacts')
+      .post('/contacts/create')
       .send(dummy.newContact)
       .set('Accept', 'Application/JSON')
       .end((err, res) => {
@@ -70,7 +70,7 @@ describe('Contact Endpoints', () => {
 
   it('Should not create a contact if email is valid', (done) => {
     chai.request(server)
-      .post('/contacts')
+      .post('/contacts/create')
       .send(dummy.falseContact)
       .set('Accept', 'Application/JSON')
       .end((err, res) => {
@@ -111,7 +111,7 @@ describe('Contact Endpoints', () => {
   it('should update an existing contact', (done) => {
     chai
       .request(server)
-      .patch('/contacts/5d079ddae071b71c9851b341')
+      .patch('/contacts/5d079ddae071b71c9851b341/update')
       .send(dummy.updateContactData)
       .set('Accept', 'Application/JSON')
       .end((err, res) => {
