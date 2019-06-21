@@ -45,24 +45,23 @@ class contactController {
 
   static async updateContact(req, res) {
     if (!req.body.firstname || !req.body.lastname || !req.body.telephone || !req.body.email || !req.body.homeAddress || !req.body.workAddress || !req.body.organisation) {
-      res.status(403).end();
       return res.status(403).send({
-        message: 'fields can not be empty',
+        message: 'All fields required!',
       });
     }
     Contact.findByIdAndUpdate(req.params.id, {
-      firstname: req.body.firstname || contact.firstname,
-      lastname: req.body.lastname || contact.lastname,
-      telephone: req.body.telephone || contact.telephone,
-      email: req.body.email || contact.email,
-      homeAddress: req.body.homeAddress || contact.homeAddress,
-      workAddress: req.body.workAddress || contact.workAddress,
-      organisation: req.body.organisation || contact.organisation,
+      firstname: req.body.firstname || '',
+      lastname: req.body.lastname || '',
+      telephone: req.body.telephone || '',
+      email: req.body.email || '',
+      homeAddress: req.body.homeAddress || '',
+      workAddress: req.body.workAddress || '',
+      organisation: req.body.organisation || '',
     }, { new: true })
       .then((contact) => {
         if (!contact) {
           return res.status(404).send({
-            message: `Contact not found with id ${  req.params.id}`,
+            message: `Contact not found with id ${req.params.id}`,
           });
         }
         return res.status(200).json({
@@ -73,11 +72,11 @@ class contactController {
       }).catch((err) => {
         if (err.kind === 'ObjectId') {
           return res.status(404).send({
-            message: `Contact not found with id ${  req.params.id}`,
+            message: `Contact not found with id ${req.params.id}`,
           });
         }
         return res.status(500).send({
-          message: `Error updating contact with id ${  req.params.id}`,
+          message: `Error updating contact with id ${req.params.id}`,
         });
       });
   }
@@ -133,7 +132,6 @@ class contactController {
       });
     }
   }
-
   /**
    * @function viewById
    * @param {Object} req

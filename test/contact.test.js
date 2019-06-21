@@ -111,7 +111,7 @@ describe('Contact Endpoints', () => {
   it('should update an existing contact', (done) => {
     chai
       .request(server)
-      .patch('/contacts/5d079ddae071b71c9851b341')
+      .patch('/contacts/5d079ddae071b71c9851b341/update')
       .send(dummy.updateContactData)
       .set('Accept', 'Application/JSON')
       .end((err, res) => {

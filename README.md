@@ -53,9 +53,12 @@ npm test in terminal
 |  Method  |  Endpoint  |  Task  |
 |  --- |  --- |  ---  |
 |  `POST`  |  `/contacts`  |  `User save contact`  |
-|  `GET`  |  `/contacts`  |  `User view contacts`  |
-|  `PATCH`  |  `/contacts/:id`  |  `Update User contacts`  |
-|  `DELETE`  |  `/contacts/:id`  |  `Delete User contacts`  |
+|  `GET`  |  `/contacts/all`  |  `User view contacts`  |
+|  `GET`  |  `/contacts/view/email`  |  `User view contact by email`  |
+|  `GET`  |  `/contacts/view/name`  |  `User view contact by name`  |
+|  `GET`  |  `/contacts/view/:id/`  |  `User view contact by id`  |
+|  `PATCH`  |  `/contacts/:id/update`  |  `Update User contacts`  |
+|  `DELETE`  |  `/contacts/:id/delete`  |  `Delete User contacts`  |
 
 #### Credit
 * All credit given to [Brian](https://andela.com) for requiring us to present a simple project
