@@ -132,7 +132,6 @@ class contactController {
       });
     }
   }
-
   /**
    * @function viewById
    * @param {Object} req
