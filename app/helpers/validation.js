@@ -12,7 +12,7 @@ const contactSchema = Joi.object().keys({
 });
 
 const EmailOnly = Joi.object().keys({
-  email: Joi.string().email(),
+  email: Joi.string().email().required(),
 });
 
 export default { contactSchema, EmailOnly };

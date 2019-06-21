@@ -95,7 +95,7 @@ class contactController {
             } else {
               res.status(404).json({
                 id: req.params.id,
-                message: 'This id is not Exist!',
+                message: 'No result found with that id',
               });
             }
           }).catch((err) => {
